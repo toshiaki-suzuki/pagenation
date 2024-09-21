@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:14 # PostgreSQLのバージョンを指定します。必要に応じて変更してください。
+    environment:
+      POSTGRES_PASSWORD: password # スーパーユーザーのパスワードを設定します。セキュリティのために変更してください。
+      POSTGRES_DB: postgres # 初期データベースの名前を設定します。
+      POSTGRES_USER: postgres # ユーザー名を設定します。
+    ports:
+      - "5432:5432" # ホストマシンのポートとコンテナのポートをマッピングします。
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # データの永続性を保つためのボリュームを指定します。
+
+volumes:
+  postgres-data:
